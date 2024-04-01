@@ -29,7 +29,7 @@ class Stringer(MutableMapping[str, Self]):
             self[k] = v if isinstance(v, type(self) | str) else type(self)(**v)
         self._flags = NOFLAG
 
-    def compile(self, quiet: bool = False, flags: RegexFlag = NOFLAG) -> Pattern[str]:  # noqa: A003
+    def compile(self, quiet: bool = False, flags: RegexFlag = NOFLAG) -> Pattern[str]:
         """Substitute values into root `r` and get compiled regex pattern."""
         return compile(self.sub(quiet), flags=self._flags | flags)
 
